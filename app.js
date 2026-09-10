@@ -59,7 +59,8 @@ const card=$('#birthday-card');
 card.insertAdjacentHTML('beforeend','<div class="card-spine" aria-hidden="true"></div><div class="card-spine right" aria-hidden="true"></div>');
 function applyRotation(animate=false){card.style.transition=animate&&!reduceMotion?'transform .65s cubic-bezier(.2,.7,.2,1)':'none';card.style.transform=`rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;}
 // The entire card owns the gesture, including its image and reverse-side text.
-card.addEventListener('dragstart',event=>event.preventDefault());
+card.addEventListener('dragstart',event=>event.preventDefault(),true);
+card.addEventListener('selectstart',event=>event.preventDefault(),true);
 card.addEventListener('pointerdown',event=>{
   if(event.button!==0||!event.isPrimary||drag)return;
   event.preventDefault();
