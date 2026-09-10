@@ -58,9 +58,18 @@ let rotationX=4, rotationY=-13, drag=null, opening=false, finaleTimer;
 const card=$('#birthday-card');
 card.insertAdjacentHTML('beforeend','<div class="card-spine" aria-hidden="true"></div><div class="card-spine right" aria-hidden="true"></div>');
 function applyRotation(animate=false){card.style.transition=animate&&!reduceMotion?'transform .65s cubic-bezier(.2,.7,.2,1)':'none';card.style.transform=`rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;}
-card.addEventListener('pointerdown',event=>{if(event.button!==0)return;card.style.transition='none';drag={x:event.clientX,y:event.clientY,rx:rotationX,ry:rotationY};card.setPointerCapture(event.pointerId);});
-card.addEventListener('pointermove',event=>{if(!drag)return;rotationY=drag.ry+(event.clientX-drag.x)*.6;rotationX=Math.max(-65,Math.min(65,drag.rx-(event.clientY-drag.y)*.35));applyRotation();});
-function endDrag(){drag=null;}
+// The entire card owns the gesture, including its image and reverse-side text.
+card.addEventListener('dragstart',event=>event.preventDefault());
+card.addEventListener('pointerdown',event=>{
+  if(event.button!==0||!event.isPrimary||drag)return;
+  event.preventDefault();
+  card.focus({preventScroll:true});
+  card.style.transition='none';
+  drag={pointerId:event.pointerId,x:event.clientX,y:event.clientY,rx:rotationX,ry:rotationY};
+  card.setPointerCapture(event.pointerId);
+});
+card.addEventListener('pointermove',event=>{if(!drag||event.pointerId!==drag.pointerId)return;rotationY=drag.ry+(event.clientX-drag.x)*.6;rotationX=Math.max(-65,Math.min(65,drag.rx-(event.clientY-drag.y)*.35));applyRotation();});
+function endDrag(event){if(drag&&event.pointerId===drag.pointerId)drag=null;}
 card.addEventListener('pointerup',endDrag);card.addEventListener('pointercancel',endDrag);card.addEventListener('lostpointercapture',endDrag);
 card.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(event.key))return;event.preventDefault();if(event.key==='ArrowLeft')rotationY-=15;if(event.key==='ArrowRight')rotationY+=15;if(event.key==='ArrowUp')rotationX=Math.max(-65,rotationX-10);if(event.key==='ArrowDown')rotationX=Math.min(65,rotationX+10);if(event.key==='Home'){rotationX=4;rotationY=-13;}applyRotation(true);});
 $('#flip-card').addEventListener('click',()=>{rotationY+=180;rotationX=0;applyRotation(true);});
