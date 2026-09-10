@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111315">
+  <title>Ника, с Днём рождения! — секретная доставка</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg"><defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".78" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs></svg>
+  <aside class="sidebar">
+    <a class="brand" href="#top" aria-label="В начало">H<span>B</span>D<span class="brand-star">✦</span><small>ОСОБЕННЫЙ ДЕНЬ.<br>ОСОБЕННАЯ ТЫ.</small></a>
+    <nav aria-label="Разделы"><a class="nav-link active" href="#quest"><span>⚑</span> Твой квест <b id="nav-count">0/5</b></a><a class="nav-link" href="#gift" id="gift-nav" aria-disabled="true"><span>♧</span> Твой подарок <span id="lock-icon">⌑</span></a></nav>
+    <div class="side-note">СЕГОДНЯ МОЖНО<br>ЧУТЬ БОЛЬШЕ<br><strong>ВСЕГО.</strong><span class="drawn-star">✧</span></div>
+    <div class="cat-doodle" aria-hidden="true"><svg viewBox="0 0 180 165"><path d="M35 82 23 20 68 50Q91 38 113 50L153 19 145 85Q167 131 123 145Q85 159 45 142Q17 120 35 82Z"/><path d="m35 92-29-9m31 21L4 107m138-16 31-13m-28 27 29 4M83 113l8 7 9-9m-9 9v9m0 0-12 5m12-5 13 3"/><g class="glasses"><path d="m33 75 46 2-5 29-30-3Z M99 78l45-3-7 29-30 2Z M79 83h21"/></g></svg><span>Проверено котом.<br>Почти безопасно.</span></div>
+    <div class="side-bottom"><i></i> СЛУЖБА ДОСТАВКИ РАДОСТИ</div>
+  </aside>
+  <main id="top">
+    <header class="topbar"><span>01 <i> / </i> Секретная доставка</span><span class="recipient"><span class="avatar">Н</span> Сегодня всё для тебя, <strong>Ника</strong> <span class="tiny-star">✦</span></span></header>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy"><div class="eyebrow"><span></span> У ТЕБЯ ОДНО НОВОЕ ПОЗДРАВЛЕНИЕ</div><h1 id="hero-title">Поздравляю<br>с Днём<br><span>рождения!</span><svg viewBox="0 0 100 70" aria-hidden="true"><path d="m10 53 1-39 27 24L55 6l8 31 27-9-19 34Z"/></svg></h1><p>Для тебя есть кое-что особенное.<br>Чтобы получить подарок, смотри ниже.<span class="muted">Да, всё почти так просто.</span></p><a class="button primary hero-cta" href="#quest">Забрать подарок <span>↘</span></a><div class="hand-note">маленький квест. большой повод.<svg viewBox="0 0 90 48" aria-hidden="true"><path d="M3 7q63-17 64 30m-15-9 15 13 9-17"/></svg></div></div>
+      <div class="hero-art"><span class="art-label">СПЕЦИАЛЬНО ДЛЯ НИКИ</span><span class="art-star star-one">✦</span><span class="art-star star-two">✧</span><span class="scribble">Трогать можно.<br>Но сначала капча :)</span><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="parcel-preview" id="hero-parcel" aria-hidden="true"></div><span class="gift-tag">ТЕБЕ. С ЛЮБОВЬЮ. <span>↗</span></span><div class="art-bottom"><span>СОДЕРЖИМОЕ: СЕКРЕТ</span><span>100% ОТ ДУШИ</span></div></div>
+    </section>
+    <section class="quest-section" id="quest" aria-labelledby="quest-title"><div class="section-heading"><div><span class="eyebrow">ПУТЬ К ПОДАРКУ</span><h2 id="quest-title">Всего пара формальностей<span>*</span></h2></div><span class="fine-print">* Ну… почти пара.</span></div><ol class="progress-track" aria-label="Прогресс квеста"><li class="current"><span>01</span>Не робот</li><li><span>02</span>Котоконтроль</li><li><span>03</span>Точная настройка</li><li><span>04</span>Секретный код</li><li><span>05</span>Загадай желание</li><li class="prize-step"><span>✧</span>Подарок!</li></ol><div id="challenges"></div></section>
+    <section id="gift" class="gift-section" hidden aria-labelledby="gift-title"><div class="eyebrow">ВСЕ ПРОВЕРКИ ПРОЙДЕНЫ. ТЫ ЛЕГЕНДА.</div><h2 id="gift-title">Ладно. Ты заслужила <em>магию.</em></h2><p id="gift-subtitle">Больше никаких капч. Обещаю. Нажми на подарок.</p><div class="final-stage" id="final-stage"><div class="gift-glow"></div><div id="final-parcel" class="final-parcel" aria-hidden="true"></div><button id="open-gift" class="open-gift" aria-label="Открыть подарок"><span>Открыть подарок</span><b>✦</b></button><div class="card-space" id="card-space" hidden><div class="birthday-card" id="birthday-card" tabindex="0" role="group" aria-label="Объёмная открытка. Перетаскивай для вращения или используй стрелки на клавиатуре."><div class="card-face card-front"><img src="assets/birthday-card.png" alt="С Днём рождения, Ника! Денис и Ника с праздничным тортом. Пусть магия, идеи и вдохновение всегда будут рядом!" draggable="false"></div><div class="card-face card-back"><span class="back-top">ОДНО ПОЗДРАВЛЕНИЕ. БЕСКОНЕЧНО ТЕПЛА.</span><span class="back-star">✦</span><h3>Ника,<br>ты — <em>магия.</em></h3><p>Пусть в твоей жизни будет больше смелых идей, неожиданных открытий и людей, рядом с которыми можно быть собой.</p><p>Создавай, мечтай, вдохновляй. Пусть всё задуманное получается, а поводов улыбаться становится только больше.</p><strong>С Днём рождения! ♡</strong><span class="signature">С теплом, Денис</span><span class="back-footer">P.S. За терпение с капчами — отдельный респект.</span></div><div class="card-edge"></div></div></div></div><div class="card-controls" id="card-controls" hidden><span class="rotate-hint">↔ Потяни открытку, чтобы покрутить</span><div class="control-buttons"><button class="button secondary" id="flip-card">Перевернуть ↻</button><button class="button secondary" id="reset-card">Вернуть ракурс</button><a class="button primary" href="assets/birthday-card.png" download="С-Днём-рождения-Ника.png">Сохранить открытку ↓</a></div><button class="text-button" id="replay-gift">Ещё раз эту магию ✦</button></div></section>
+    <footer><span>СДЕЛАНО С ТЕПЛОМ И ЛЁГКИМ ТРОЛЛИНГОМ</span><span>Ты бесценна. Даже без капчи. <b>♡</b></span></footer>
+  </main><canvas id="confetti" aria-hidden="true"></canvas><div id="live-status" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>
